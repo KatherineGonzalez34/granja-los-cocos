@@ -11,7 +11,7 @@ namespace GranjaLosCocos
     {
         private MySqlConnection conexion;
         private string server = "localhost";
-        private string database = "alumnosC";
+        private string database = "granja_cocos";
         private string user = "root";
         private string password = "";
         private string port = "3307";
@@ -32,6 +32,14 @@ namespace GranjaLosCocos
                 conexion = new MySqlConnection(cadenaConexion);
                 conexion.Open();
             }
+
+            return conexion;
+        }
+
+        public MySqlConnection closeConexion()
+        {
+            conexion.Close();
+            conexion = null;
 
             return conexion;
         }
