@@ -12,7 +12,7 @@ namespace GranjaLosCocos
 {
     public class cConexion
     {
-        private string connectionString = "server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos";
+        private string connectionString = "server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos;port=3307";
         private MySqlConnection connection;
 
         public cConexion()
@@ -153,6 +153,29 @@ namespace GranjaLosCocos
                 Close();
             }
         }
+
+        public Boolean iniciarSesion(string usuario, String clave)
+        {
+            try
+            {
+                Open();
+                string query = "SELECT * FROM trabajador WHERE usuario= @usuario && clave=@clave";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@usuario", usuario);
+                cmd.Parameters.AddWithValue("@clave", clave);
+                object result = cmd.ExecuteScalar();
+                return result != null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Close();
+            }
+        }
+
 
 
     }
