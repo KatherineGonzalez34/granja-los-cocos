@@ -16,7 +16,7 @@ namespace GranjaLosCocos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ControlInventarioForm());
+            Application.Run(new Login());
         }
     }
 }
