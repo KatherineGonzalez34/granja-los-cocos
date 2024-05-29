@@ -73,7 +73,7 @@ namespace GranjaLosCocos
             this.label1.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(83, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 22);
+            this.label1.Size = new System.Drawing.Size(189, 28);
             this.label1.TabIndex = 4;
             this.label1.Text = "Granja los cocos";
             // 
@@ -92,7 +92,7 @@ namespace GranjaLosCocos
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(456, 206);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.Size = new System.Drawing.Size(70, 15);
             this.label4.TabIndex = 14;
             this.label4.Text = "Contraseña";
             // 
@@ -108,7 +108,7 @@ namespace GranjaLosCocos
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(456, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.Size = new System.Drawing.Size(53, 15);
             this.label3.TabIndex = 12;
             this.label3.Text = "Usuario:";
             // 
@@ -125,7 +125,7 @@ namespace GranjaLosCocos
             this.label2.Font = new System.Drawing.Font("Cambria", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(394, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(342, 37);
+            this.label2.Size = new System.Drawing.Size(428, 47);
             this.label2.TabIndex = 10;
             this.label2.Text = "¡Bienvenido de nuevo!";
             // 
@@ -154,6 +154,7 @@ namespace GranjaLosCocos
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);

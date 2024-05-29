@@ -48,14 +48,20 @@ namespace GranjaLosCocos
             }
         }
 
-        private void btnVacunas_Click(object sender, EventArgs e)
+        private void btnVacunasAdmin_Click(object sender, EventArgs e)
         {
-
+            // Navegar al formulario VacunasAdminForm
+            VacunasAdminForm vacunasForm = new VacunasAdminForm();
+            vacunasForm.Show();
+            this.Hide(); // Ocultar el formulario actual
         }
 
         private void btnControl_Click(object sender, EventArgs e)
         {
-
+            // Navegar al formulario ControlVacunasGallinaForm
+            ControlVacunasGallinaForm controlvacunasgallinaForm = new ControlVacunasGallinaForm();
+            controlvacunasgallinaForm.Show();
+            this.Hide(); // Ocultar el formulario actual
         }
     }
 }
