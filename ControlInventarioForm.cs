@@ -106,5 +106,11 @@ namespace GranjaLosCocos
             e.Graphics.DrawImage(bm, 0, 0);
         }
 
+        private void btnProduccionDiaria_Click(object sender, EventArgs e)
+        {
+            SubmenuProduccionDiariaForm submenu = new SubmenuProduccionDiariaForm();
+            submenu.Show();
+            this.Hide();
+        }
     }
 }
