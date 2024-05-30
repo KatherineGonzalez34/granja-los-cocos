@@ -1,7 +1,7 @@
 ﻿
 namespace GranjaLosCocos
 {
-    partial class GallinasAdminForm
+    partial class ControlVacunasGallinaForm
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.Panel panelMenu;
@@ -12,18 +12,21 @@ namespace GranjaLosCocos
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Label lblFechaNacimiento;
-        private System.Windows.Forms.Label lblRaza;
-        private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
-        private System.Windows.Forms.ComboBox cmbRaza;
+        private System.Windows.Forms.Label lblGallina;
+        private System.Windows.Forms.Label lblVacuna;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblDosis;
+        private System.Windows.Forms.ComboBox cmbGallina;
+        private System.Windows.Forms.ComboBox cmbVacuna;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.ComboBox cmbDosis;
 
-        /// <param name="disposing">true si managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -43,16 +46,20 @@ namespace GranjaLosCocos
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblFechaNacimiento = new System.Windows.Forms.Label();
-            this.lblRaza = new System.Windows.Forms.Label();
-            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.cmbRaza = new System.Windows.Forms.ComboBox();
+            this.lblGallina = new System.Windows.Forms.Label();
+            this.lblVacuna = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblDosis = new System.Windows.Forms.Label();
+            this.cmbGallina = new System.Windows.Forms.ComboBox();
+            this.cmbVacuna = new System.Windows.Forms.ComboBox();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.cmbDosis = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
@@ -73,7 +80,7 @@ namespace GranjaLosCocos
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(295, 796);
+            this.panelMenu.Size = new System.Drawing.Size(299, 807);
             this.panelMenu.TabIndex = 0;
             // 
             // btnInventario
@@ -81,11 +88,11 @@ namespace GranjaLosCocos
             this.btnInventario.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnInventario.Location = new System.Drawing.Point(45, 200);
+            this.btnInventario.Location = new System.Drawing.Point(39, 182);
             this.btnInventario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInventario.Name = "btnInventario";
-            this.btnInventario.Size = new System.Drawing.Size(213, 37);
-            this.btnInventario.TabIndex = 1;
+            this.btnInventario.Size = new System.Drawing.Size(213, 44);
+            this.btnInventario.TabIndex = 0;
             this.btnInventario.Text = "Inventario";
             this.btnInventario.UseVisualStyleBackColor = false;
             this.btnInventario.Click += new System.EventHandler(this.btnInventario_Click);
@@ -95,11 +102,11 @@ namespace GranjaLosCocos
             this.btnGallinas.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnGallinas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGallinas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnGallinas.Location = new System.Drawing.Point(45, 278);
+            this.btnGallinas.Location = new System.Drawing.Point(39, 268);
             this.btnGallinas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGallinas.Name = "btnGallinas";
-            this.btnGallinas.Size = new System.Drawing.Size(213, 37);
-            this.btnGallinas.TabIndex = 2;
+            this.btnGallinas.Size = new System.Drawing.Size(213, 44);
+            this.btnGallinas.TabIndex = 1;
             this.btnGallinas.Text = "Gallinas";
             this.btnGallinas.UseVisualStyleBackColor = false;
             this.btnGallinas.Click += new System.EventHandler(this.btnGallinas_Click);
@@ -109,11 +116,11 @@ namespace GranjaLosCocos
             this.btnCosechas.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnCosechas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCosechas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnCosechas.Location = new System.Drawing.Point(45, 359);
+            this.btnCosechas.Location = new System.Drawing.Point(39, 358);
             this.btnCosechas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCosechas.Name = "btnCosechas";
-            this.btnCosechas.Size = new System.Drawing.Size(213, 37);
-            this.btnCosechas.TabIndex = 3;
+            this.btnCosechas.Size = new System.Drawing.Size(213, 44);
+            this.btnCosechas.TabIndex = 2;
             this.btnCosechas.Text = "Cosechas";
             this.btnCosechas.UseVisualStyleBackColor = false;
             // 
@@ -122,11 +129,11 @@ namespace GranjaLosCocos
             this.btnProduccionDiaria.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnProduccionDiaria.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnProduccionDiaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnProduccionDiaria.Location = new System.Drawing.Point(45, 442);
+            this.btnProduccionDiaria.Location = new System.Drawing.Point(39, 438);
             this.btnProduccionDiaria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnProduccionDiaria.Name = "btnProduccionDiaria";
-            this.btnProduccionDiaria.Size = new System.Drawing.Size(213, 37);
-            this.btnProduccionDiaria.TabIndex = 4;
+            this.btnProduccionDiaria.Size = new System.Drawing.Size(213, 44);
+            this.btnProduccionDiaria.TabIndex = 3;
             this.btnProduccionDiaria.Text = "Producción diaria";
             this.btnProduccionDiaria.UseVisualStyleBackColor = false;
             // 
@@ -135,11 +142,11 @@ namespace GranjaLosCocos
             this.btnUsuarios.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnUsuarios.Location = new System.Drawing.Point(45, 523);
+            this.btnUsuarios.Location = new System.Drawing.Point(39, 530);
             this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(213, 37);
-            this.btnUsuarios.TabIndex = 5;
+            this.btnUsuarios.Size = new System.Drawing.Size(213, 44);
+            this.btnUsuarios.TabIndex = 4;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.UseVisualStyleBackColor = false;
             // 
@@ -148,11 +155,11 @@ namespace GranjaLosCocos
             this.btnCerrarSesion.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnCerrarSesion.Location = new System.Drawing.Point(45, 711);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(39, 720);
             this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(213, 37);
-            this.btnCerrarSesion.TabIndex = 6;
+            this.btnCerrarSesion.Size = new System.Drawing.Size(213, 44);
+            this.btnCerrarSesion.TabIndex = 5;
             this.btnCerrarSesion.Text = "Cerrar sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
@@ -164,77 +171,94 @@ namespace GranjaLosCocos
             this.lblTitulo.Location = new System.Drawing.Point(619, 22);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(393, 35);
+            this.lblTitulo.Size = new System.Drawing.Size(451, 35);
             this.lblTitulo.TabIndex = 1;
-            this.lblTitulo.Text = "Administración de gallinas";
+            this.lblTitulo.Text = "Control de vacunas por gallina";
             // 
-            // lblFechaNacimiento
+            // lblGallina
             // 
-            this.lblFechaNacimiento.AutoSize = true;
-            this.lblFechaNacimiento.Font = new System.Drawing.Font("Arial", 12F);
-            this.lblFechaNacimiento.Location = new System.Drawing.Point(477, 111);
-            this.lblFechaNacimiento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblFechaNacimiento.Name = "lblFechaNacimiento";
-            this.lblFechaNacimiento.Size = new System.Drawing.Size(197, 23);
-            this.lblFechaNacimiento.TabIndex = 2;
-            this.lblFechaNacimiento.Text = "Fecha de nacimiento:";
+            this.lblGallina.AutoSize = true;
+            this.lblGallina.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblGallina.Location = new System.Drawing.Point(418, 91);
+            this.lblGallina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGallina.Name = "lblGallina";
+            this.lblGallina.Size = new System.Drawing.Size(240, 23);
+            this.lblGallina.TabIndex = 2;
+            this.lblGallina.Text = "Identificacion de la gallina:";
             // 
-            // lblRaza
+            // lblVacuna
             // 
-            this.lblRaza.AutoSize = true;
-            this.lblRaza.Font = new System.Drawing.Font("Arial", 12F);
-            this.lblRaza.Location = new System.Drawing.Point(508, 164);
-            this.lblRaza.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblRaza.Name = "lblRaza";
-            this.lblRaza.Size = new System.Drawing.Size(178, 23);
-            this.lblRaza.TabIndex = 3;
-            this.lblRaza.Text = "Nombre de la raza:";
+            this.lblVacuna.AutoSize = true;
+            this.lblVacuna.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblVacuna.Location = new System.Drawing.Point(457, 145);
+            this.lblVacuna.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVacuna.Name = "lblVacuna";
+            this.lblVacuna.Size = new System.Drawing.Size(201, 23);
+            this.lblVacuna.TabIndex = 3;
+            this.lblVacuna.Text = "Nombre de la vacuna:";
             // 
-            // dtpFechaNacimiento
+            // lblFecha
             // 
-            this.dtpFechaNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(760, 111);
-            this.dtpFechaNacimiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(392, 24);
-            this.dtpFechaNacimiento.TabIndex = 4;
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblFecha.Location = new System.Drawing.Point(468, 198);
+            this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(190, 23);
+            this.lblFecha.TabIndex = 4;
+            this.lblFecha.Text = "Fecha de aplicacion:";
             // 
-            // cmbRaza
+            // lblDosis
             // 
-            this.cmbRaza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cmbRaza.FormattingEnabled = true;
-            this.cmbRaza.Items.AddRange(new object[] {
-            "Leghorn",
-            "Rhode Island Red",
-            "Plymouth Rock (Barred Rock)",
-            "Sussex",
-            "Australorp",
-            "Isa Brown",
-            "Ancona",
-            "Minorca",
-            "Golden Comet",
-            "Marans",
-            "Andalusian",
-            "New Hampshire",
-            "Hamburg",
-            "Welsummer",
-            "Bovan Brown"});
-            this.cmbRaza.Location = new System.Drawing.Point(760, 164);
-            this.cmbRaza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cmbRaza.Name = "cmbRaza";
-            this.cmbRaza.Size = new System.Drawing.Size(392, 26);
-            this.cmbRaza.TabIndex = 5;
+            this.lblDosis.AutoSize = true;
+            this.lblDosis.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblDosis.Location = new System.Drawing.Point(593, 251);
+            this.lblDosis.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDosis.Name = "lblDosis";
+            this.lblDosis.Size = new System.Drawing.Size(65, 23);
+            this.lblDosis.TabIndex = 5;
+            this.lblDosis.Text = "Dosis:";
+            // 
+            // cmbGallina
+            // 
+            this.cmbGallina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmbGallina.FormattingEnabled = true;
+            this.cmbGallina.Location = new System.Drawing.Point(707, 92);
+            this.cmbGallina.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbGallina.Name = "cmbGallina";
+            this.cmbGallina.Size = new System.Drawing.Size(399, 26);
+            this.cmbGallina.TabIndex = 6;
+            // 
+            // cmbVacuna
+            // 
+            this.cmbVacuna.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmbVacuna.FormattingEnabled = true;
+            this.cmbVacuna.Location = new System.Drawing.Point(707, 142);
+            this.cmbVacuna.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbVacuna.Name = "cmbVacuna";
+            this.cmbVacuna.Size = new System.Drawing.Size(399, 26);
+            this.cmbVacuna.TabIndex = 7;
+            this.cmbVacuna.SelectedIndexChanged += new System.EventHandler(this.cmbVacuna_SelectedIndexChanged);
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.dtpFecha.Location = new System.Drawing.Point(707, 197);
+            this.dtpFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(399, 24);
+            this.dtpFecha.TabIndex = 8;
             // 
             // btnCrear
             // 
             this.btnCrear.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnCrear.Location = new System.Drawing.Point(447, 242);
+            this.btnCrear.Location = new System.Drawing.Point(479, 314);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(188, 41);
-            this.btnCrear.TabIndex = 6;
+            this.btnCrear.TabIndex = 10;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = false;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
@@ -244,11 +268,11 @@ namespace GranjaLosCocos
             this.btnActualizar.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnActualizar.Location = new System.Drawing.Point(767, 242);
+            this.btnActualizar.Location = new System.Drawing.Point(799, 314);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(188, 41);
-            this.btnActualizar.TabIndex = 7;
+            this.btnActualizar.TabIndex = 11;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
@@ -258,11 +282,11 @@ namespace GranjaLosCocos
             this.btnEliminar.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnEliminar.Location = new System.Drawing.Point(1043, 242);
+            this.btnEliminar.Location = new System.Drawing.Point(1075, 314);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(188, 41);
-            this.btnEliminar.TabIndex = 8;
+            this.btnEliminar.TabIndex = 12;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -270,63 +294,79 @@ namespace GranjaLosCocos
             // txtBuscar
             // 
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.txtBuscar.Location = new System.Drawing.Point(367, 337);
+            this.txtBuscar.Location = new System.Drawing.Point(431, 390);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(795, 27);
-            this.txtBuscar.TabIndex = 9;
+            this.txtBuscar.Size = new System.Drawing.Size(779, 27);
+            this.txtBuscar.TabIndex = 13;
             // 
             // btnBuscar
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.Location = new System.Drawing.Point(1240, 331);
+            this.btnBuscar.Location = new System.Drawing.Point(1269, 384);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(139, 39);
-            this.btnBuscar.TabIndex = 10;
+            this.btnBuscar.TabIndex = 14;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
             // dgvDatos
             // 
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Location = new System.Drawing.Point(345, 432);
+            this.dgvDatos.Location = new System.Drawing.Point(349, 464);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.RowHeadersWidth = 51;
-            this.dgvDatos.Size = new System.Drawing.Size(1048, 334);
-            this.dgvDatos.TabIndex = 11;
+            this.dgvDatos.Size = new System.Drawing.Size(1059, 301);
+            this.dgvDatos.TabIndex = 15;
+            // 
+            // cmbDosis
+            // 
+            this.cmbDosis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDosis.FormattingEnabled = true;
+            this.cmbDosis.Items.AddRange(new object[] {
+            "Dosis: 0.1 ml a 0.5 ml por gallina",
+            "Dosis: 0.2 ml a 0.5 ml por gallina",
+            "Dosis: 0.01 ml a 0.1 ml por gallina",
+            "Dosis: 0.1 ml a 0.2 ml por gallina",
+            "Dosis: 0.5 ml por gallina"});
+            this.cmbDosis.Location = new System.Drawing.Point(707, 252);
+            this.cmbDosis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDosis.Name = "cmbDosis";
+            this.cmbDosis.Size = new System.Drawing.Size(399, 26);
+            this.cmbDosis.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(441, 386);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(571, 430);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(490, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Buscar por fecha de nacimiento (yyyy-mm-dd) o nombre de raza\r\n";
+            this.label1.Size = new System.Drawing.Size(517, 20);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Buscar por dosis, fecha de aplicacion o por identificacion de gallina:";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GranjaLosCocos.Properties.Resources.Screenshot_cocos;
-            this.pictureBox1.Location = new System.Drawing.Point(45, 51);
+            this.pictureBox1.Location = new System.Drawing.Point(53, 52);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(202, 84);
+            this.pictureBox1.Size = new System.Drawing.Size(181, 84);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // GallinasAdminForm
+            // ControlVacunasGallinaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1451, 796);
+            this.ClientSize = new System.Drawing.Size(1456, 807);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbDosis);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.btnBuscar);
@@ -334,15 +374,18 @@ namespace GranjaLosCocos
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnCrear);
-            this.Controls.Add(this.cmbRaza);
-            this.Controls.Add(this.dtpFechaNacimiento);
-            this.Controls.Add(this.lblRaza);
-            this.Controls.Add(this.lblFechaNacimiento);
+            this.Controls.Add(this.dtpFecha);
+            this.Controls.Add(this.cmbVacuna);
+            this.Controls.Add(this.cmbGallina);
+            this.Controls.Add(this.lblDosis);
+            this.Controls.Add(this.lblFecha);
+            this.Controls.Add(this.lblVacuna);
+            this.Controls.Add(this.lblGallina);
             this.Controls.Add(this.lblTitulo);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "GallinasAdminForm";
+            this.Name = "ControlVacunasGallinaForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Administración de gallinas";
+            this.Text = "Control de vacunas por gallina";
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

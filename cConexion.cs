@@ -12,7 +12,7 @@ namespace GranjaLosCocos
 {
     public class cConexion
     {
-        private string connectionString = "server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos;port=3307";
+        private string connectionString = "server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos";
         private MySqlConnection connection;
 
         public cConexion()
@@ -41,7 +41,7 @@ namespace GranjaLosCocos
             }
         }
 
-        public DataSet buscar(String strSQL, String tabla)
+        public DataSet buscar(string strSQL, string tabla)
         {
             DataSet ds = new DataSet();
             try
@@ -61,7 +61,7 @@ namespace GranjaLosCocos
             return ds;
         }
 
-        public void operacion(String strsql)
+        public void operacion(string strsql)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace GranjaLosCocos
             }
         }
 
-        public double escalar_double(String strsql)
+        public double escalar_double(string strsql)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace GranjaLosCocos
             }
         }
 
-        public String escalar_cadena(String strsql)
+        public string escalar_cadena(string strsql)
         {
             try
             {
@@ -115,7 +115,7 @@ namespace GranjaLosCocos
             }
         }
 
-        public Int64 escalar_entero(String strsql)
+        public Int64 escalar_entero(string strsql)
         {
             try
             {
@@ -154,7 +154,7 @@ namespace GranjaLosCocos
             }
         }
 
-        public Boolean iniciarSesion(string usuario, String clave)
+        public bool iniciarSesion(string usuario, string clave)
         {
             try
             {
@@ -175,8 +175,5 @@ namespace GranjaLosCocos
                 Close();
             }
         }
-
-
-
     }
 }

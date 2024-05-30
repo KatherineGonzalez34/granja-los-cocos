@@ -76,6 +76,7 @@ namespace GranjaLosCocos
                 string query = "SELECT ID_Gallina, FechaNacimiento, Raza, raza_gallina_id FROM GALLINA";
                 DataSet ds = conexion.buscar(query, "GALLINA");
                 dgvDatos.DataSource = ds.Tables["GALLINA"];
+                dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
             {
@@ -156,8 +157,26 @@ namespace GranjaLosCocos
 
             try
             {
-                string query = $"DELETE FROM GALLINA WHERE ID_Gallina={id}";
-                conexion.operacion(query);
+                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
+                {
+                    conn.Open();
+
+                    // Eliminar las filas relacionadas en la tabla control_vacunas_por_gallina
+                    string deleteRelatedQuery = "DELETE FROM control_vacunas_por_gallina WHERE Gallina_ID_Gallina = @Gallina_ID_Gallina";
+                    using (MySqlCommand cmd = new MySqlCommand(deleteRelatedQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Gallina_ID_Gallina", id);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Luego eliminar la gallina
+                    string deleteQuery = "DELETE FROM gallina WHERE ID_Gallina = @ID_Gallina";
+                    using (MySqlCommand cmd = new MySqlCommand(deleteQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ID_Gallina", id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
                 MessageBox.Show("Gallina eliminada exitosamente.");
                 CargarDatos(); // Actualiza la vista de datos
             }
@@ -180,18 +199,48 @@ namespace GranjaLosCocos
 
             try
             {
-                // Preparar la consulta para buscar en múltiples campos
-                string query = "SELECT * FROM gallina WHERE Raza LIKE @textoBusqueda OR FechaNacimiento LIKE @textoBusqueda";
+                string query;
+                DateTime fechaBusqueda;
 
-                using (MySqlConnection conn = conexion.getConnection())
+                // Verificar si el texto de búsqueda puede ser una fecha
+                if (DateTime.TryParse(textoBusqueda, out fechaBusqueda))
+                {
+                    // Formatear la fecha para coincidir con el formato de MySQL
+                    string fechaFormateada = fechaBusqueda.ToString("yyyy-MM-dd");
+                    query = @"
+                SELECT * 
+                FROM gallina 
+                WHERE FechaNacimiento = @fechaFormateada";
+                }
+                else
+                {
+                    // Buscar por Raza
+                    query = @"
+                SELECT * 
+                FROM gallina 
+                WHERE Raza LIKE @textoBusqueda";
+                }
+
+                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
                 {
                     conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds, "gallina");
-                    dgvDatos.DataSource = ds.Tables["gallina"];
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        if (DateTime.TryParse(textoBusqueda, out fechaBusqueda))
+                        {
+                            cmd.Parameters.AddWithValue("@fechaFormateada", fechaBusqueda.ToString("yyyy-MM-dd"));
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
+                        }
+
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataSet ds = new DataSet();
+                        adapter.Fill(ds, "gallina");
+                        dgvDatos.DataSource = ds.Tables["gallina"];
+                        dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    }
                 }
             }
             catch (Exception ex)
