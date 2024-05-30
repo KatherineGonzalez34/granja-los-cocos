@@ -20,7 +20,6 @@ namespace GranjaLosCocos
             InitializeComponent();
             conexion = new cConexion();
             CargarDatos();
-
         }
 
         private void btnInventario_Click(object sender, EventArgs e)
@@ -32,10 +31,9 @@ namespace GranjaLosCocos
 
         private void btnGallinas_Click(object sender, EventArgs e)
         {
-            // Navegar al formulario GallinasForm
             GallinasForm gallinasForm = new GallinasForm();
             gallinasForm.Show();
-            this.Hide(); // Ocultar el formulario actual
+            this.Hide();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -61,24 +59,25 @@ namespace GranjaLosCocos
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
+                conexion.Open();
+                string query = "INSERT INTO vacunas (Nombre_de_vacuna, Tipo_vacuna, FechaUso) VALUES (@Nombre_de_vacuna, @Tipo_vacuna, @FechaUso)";
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection()))
                 {
-                    conn.Open();
-                    string query = "INSERT INTO vacunas (Nombre_de_vacuna, Tipo_vacuna, FechaUso) VALUES (@Nombre_de_vacuna, @Tipo_vacuna, @FechaUso)";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Nombre_de_vacuna", nombreVacuna);
-                        cmd.Parameters.AddWithValue("@Tipo_vacuna", tipoVacuna);
-                        cmd.Parameters.AddWithValue("@FechaUso", fechaUso);
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.Parameters.AddWithValue("@Nombre_de_vacuna", nombreVacuna);
+                    cmd.Parameters.AddWithValue("@Tipo_vacuna", tipoVacuna);
+                    cmd.Parameters.AddWithValue("@FechaUso", fechaUso);
+                    cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Vacuna creada exitosamente.");
-                CargarDatos(); // Actualiza la vista de datos
+                CargarDatos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al crear la vacuna: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
 
@@ -104,11 +103,10 @@ namespace GranjaLosCocos
 
             try
             {
+                conexion.Open();
                 string query = "UPDATE vacunas SET Nombre_de_vacuna=@Nombre_de_vacuna, Tipo_vacuna=@Tipo_vacuna, FechaUso=@FechaUso WHERE ID_vacuna=@ID_vacuna";
-                using (MySqlConnection conn = conexion.getConnection())
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection()))
                 {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@ID_vacuna", id);
                     cmd.Parameters.AddWithValue("@Nombre_de_vacuna", nombreVacuna);
                     cmd.Parameters.AddWithValue("@Tipo_vacuna", tipoVacuna);
@@ -116,11 +114,15 @@ namespace GranjaLosCocos
                     cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Vacuna actualizada exitosamente.");
-                CargarDatos(); // Actualiza la vista de datos
+                CargarDatos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al actualizar la vacuna: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
 
@@ -137,20 +139,23 @@ namespace GranjaLosCocos
 
             try
             {
-                string query = "DELETE FROM vacunas WHERE ID=@ID";
-                using (MySqlConnection conn = conexion.getConnection())
+                conexion.Open();
+                string query = "DELETE FROM vacunas WHERE ID_vacuna=@ID_vacuna";
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection()))
                 {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@ID_vacuna", id);
                     cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Vacuna eliminada exitosamente.");
-                CargarDatos(); // Actualiza la vista de datos
+                CargarDatos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al eliminar la vacuna: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
 
@@ -166,17 +171,15 @@ namespace GranjaLosCocos
 
             try
             {
+                conexion.Open();
                 string query = @"
-            SELECT * 
-            FROM vacunas 
-            WHERE Nombre_de_vacuna LIKE @textoBusqueda 
-            OR Tipo_vacuna LIKE @textoBusqueda 
-            OR FechaUso LIKE @textoBusqueda";
-
-                using (MySqlConnection conn = conexion.getConnection())
+                SELECT * 
+                FROM vacunas 
+                WHERE Nombre_de_vacuna LIKE @textoBusqueda 
+                OR Tipo_vacuna LIKE @textoBusqueda 
+                OR FechaUso LIKE @textoBusqueda";
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection()))
                 {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
@@ -189,36 +192,39 @@ namespace GranjaLosCocos
             {
                 MessageBox.Show("Error al buscar vacunas: " + ex.Message);
             }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         private void CargarDatos()
         {
             try
             {
+                conexion.Open();
                 string query = "SELECT ID_vacuna, Nombre_de_vacuna, Tipo_vacuna, FechaUso FROM vacunas";
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection()))
                 {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                        DataSet ds = new DataSet();
-                        adapter.Fill(ds, "vacunas");
-                        dgvDatos.DataSource = ds.Tables["vacunas"];
-                        dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    }
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds, "vacunas");
+                    dgvDatos.DataSource = ds.Tables["vacunas"];
+                    dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos: " + ex.Message);
             }
+            finally
+            {
+                conexion.Close();
+            }
         }
-
 
         private void VacunasAdminForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnActualizar_Click_1(object sender, EventArgs e)
@@ -243,25 +249,26 @@ namespace GranjaLosCocos
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
+                conexion.Open();
+                string query = "UPDATE vacunas SET Nombre_de_vacuna=@Nombre_de_vacuna, Tipo_vacuna=@Tipo_vacuna, FechaUso=@FechaUso WHERE ID_vacuna=@ID_vacuna";
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection()))
                 {
-                    conn.Open();
-                    string query = "UPDATE vacunas SET Nombre_de_vacuna=@Nombre_de_vacuna, Tipo_vacuna=@Tipo_vacuna, FechaUso=@FechaUso WHERE ID_vacuna=@ID_vacuna";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ID_vacuna", id);
-                        cmd.Parameters.AddWithValue("@Nombre_de_vacuna", nombreVacuna);
-                        cmd.Parameters.AddWithValue("@Tipo_vacuna", tipoVacuna);
-                        cmd.Parameters.AddWithValue("@FechaUso", fechaUso);
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.Parameters.AddWithValue("@ID_vacuna", id);
+                    cmd.Parameters.AddWithValue("@Nombre_de_vacuna", nombreVacuna);
+                    cmd.Parameters.AddWithValue("@Tipo_vacuna", tipoVacuna);
+                    cmd.Parameters.AddWithValue("@FechaUso", fechaUso);
+                    cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Vacuna actualizada exitosamente.");
-                CargarDatos(); // Actualiza la vista de datos
+                CargarDatos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al actualizar la vacuna: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
 
@@ -278,22 +285,23 @@ namespace GranjaLosCocos
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
+                conexion.Open();
+                string query = "DELETE FROM vacunas WHERE ID_vacuna=@ID_vacuna";
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection()))
                 {
-                    conn.Open();
-                    string query = "DELETE FROM vacunas WHERE ID_vacuna=@ID_vacuna";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ID_vacuna", id);
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.Parameters.AddWithValue("@ID_vacuna", id);
+                    cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Vacuna eliminada exitosamente.");
-                CargarDatos(); // Actualiza la vista de datos
+                CargarDatos();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al eliminar la vacuna: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
 
@@ -309,30 +317,30 @@ namespace GranjaLosCocos
 
             try
             {
+                conexion.Open();
                 string query = @"
-            SELECT * 
-            FROM vacunas 
-            WHERE Nombre_de_vacuna LIKE @textoBusqueda 
-            OR Tipo_vacuna LIKE @textoBusqueda 
-            OR FechaUso LIKE @textoBusqueda";
-
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
+                SELECT * 
+                FROM vacunas 
+                WHERE Nombre_de_vacuna LIKE @textoBusqueda 
+                OR Tipo_vacuna LIKE @textoBusqueda 
+                OR FechaUso LIKE @textoBusqueda";
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection()))
                 {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                        DataSet ds = new DataSet();
-                        adapter.Fill(ds, "vacunas");
-                        dgvDatos.DataSource = ds.Tables["vacunas"];
-                        dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    }
+                    cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds, "vacunas");
+                    dgvDatos.DataSource = ds.Tables["vacunas"];
+                    dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al buscar vacunas: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
     }
