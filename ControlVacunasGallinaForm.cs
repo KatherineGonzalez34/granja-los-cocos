@@ -39,9 +39,7 @@ namespace GranjaLosCocos
         private void cmbVacuna_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBoxItem selectedVacuna = cmbVacuna.SelectedItem as ComboBoxItem;
-           
         }
-
 
         private void LoadDosisComboBox()
         {
@@ -57,9 +55,7 @@ namespace GranjaLosCocos
             cmbDosis.DataSource = dosisItems;
             cmbDosis.DisplayMember = "Text";
             cmbDosis.ValueMember = "Value";
-
         }
-
 
         private void LoadGallinaComboBox()
         {
@@ -75,7 +71,6 @@ namespace GranjaLosCocos
                     cmbGallina.Items.Add(new ComboBoxItem { Text = reader["Nombre"].ToString(), Value = Convert.ToInt32(reader["ID_Gallina"]) });
                 }
                 reader.Close();
-
             }
             catch (Exception ex)
             {
@@ -101,7 +96,6 @@ namespace GranjaLosCocos
                     cmbVacuna.Items.Add(new ComboBoxItem { Text = reader["Nombre_de_vacuna"].ToString(), Value = Convert.ToInt32(reader["ID_vacuna"]) });
                 }
                 reader.Close();
-
             }
             catch (Exception ex)
             {
@@ -128,25 +122,24 @@ namespace GranjaLosCocos
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
-                {
-                    conn.Open();
-                    string query = "INSERT INTO control_vacunas_por_gallina (Gallina_ID_Gallina, Vacunas_id, Fecha, Dosis) VALUES (@Gallina_ID_Gallina, @Vacunas_id, @Fecha, @Dosis)";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Gallina_ID_Gallina", gallinaItem.Value);
-                        cmd.Parameters.AddWithValue("@Vacunas_id", vacunaItem.Value);
-                        cmd.Parameters.AddWithValue("@Fecha", fecha);
-                        cmd.Parameters.AddWithValue("@Dosis", dosisItem.Text);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                conexion.Open();
+                string query = "INSERT INTO control_vacunas_por_gallina (Gallina_ID_Gallina, Vacunas_id, Fecha, Dosis) VALUES (@Gallina_ID_Gallina, @Vacunas_id, @Fecha, @Dosis)";
+                MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection());
+                cmd.Parameters.AddWithValue("@Gallina_ID_Gallina", gallinaItem.Value);
+                cmd.Parameters.AddWithValue("@Vacunas_id", vacunaItem.Value);
+                cmd.Parameters.AddWithValue("@Fecha", fecha);
+                cmd.Parameters.AddWithValue("@Dosis", dosisItem.Text);
+                cmd.ExecuteNonQuery();
                 MessageBox.Show("Vacuna registrada exitosamente.");
                 LoadData(); // Actualiza la vista de datos
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al registrar la vacuna: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
 
@@ -174,26 +167,25 @@ namespace GranjaLosCocos
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
-                {
-                    conn.Open();
-                    string query = "UPDATE control_vacunas_por_gallina SET Gallina_ID_Gallina = @Gallina_ID_Gallina, Vacunas_id = @Vacunas_id, Fecha = @Fecha, Dosis = @Dosis WHERE ID = @ID";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ID", id);
-                        cmd.Parameters.AddWithValue("@Gallina_ID_Gallina", gallinaItem.Value);
-                        cmd.Parameters.AddWithValue("@Vacunas_id", vacunaItem.Value);
-                        cmd.Parameters.AddWithValue("@Fecha", fecha);
-                        cmd.Parameters.AddWithValue("@Dosis", dosisItem.Text);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                conexion.Open();
+                string query = "UPDATE control_vacunas_por_gallina SET Gallina_ID_Gallina = @Gallina_ID_Gallina, Vacunas_id = @Vacunas_id, Fecha = @Fecha, Dosis = @Dosis WHERE ID = @ID";
+                MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection());
+                cmd.Parameters.AddWithValue("@ID", id);
+                cmd.Parameters.AddWithValue("@Gallina_ID_Gallina", gallinaItem.Value);
+                cmd.Parameters.AddWithValue("@Vacunas_id", vacunaItem.Value);
+                cmd.Parameters.AddWithValue("@Fecha", fecha);
+                cmd.Parameters.AddWithValue("@Dosis", dosisItem.Text);
+                cmd.ExecuteNonQuery();
                 MessageBox.Show("Vacuna actualizada exitosamente.");
                 LoadData(); // Actualiza la vista de datos
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al actualizar la vacuna: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
 
@@ -210,16 +202,11 @@ namespace GranjaLosCocos
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
-                {
-                    conn.Open();
-                    string query = "DELETE FROM control_vacunas_por_gallina WHERE ID = @ID";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ID", id);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                conexion.Open();
+                string query = "DELETE FROM control_vacunas_por_gallina WHERE ID = @ID";
+                MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection());
+                cmd.Parameters.AddWithValue("@ID", id);
+                cmd.ExecuteNonQuery();
                 MessageBox.Show("Vacuna eliminada exitosamente.");
                 LoadData(); // Actualiza la vista de datos
             }
@@ -227,26 +214,31 @@ namespace GranjaLosCocos
             {
                 MessageBox.Show("Error al eliminar la vacuna: " + ex.Message);
             }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         private void LoadData()
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
-                {
-                    conn.Open();
-                    string query = "SELECT * FROM control_vacunas_por_gallina";
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds, "control_vacunas_por_gallina");
-                    dgvDatos.DataSource = ds.Tables["control_vacunas_por_gallina"];
-                    dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                }
+                conexion.Open();
+                string query = "SELECT * FROM control_vacunas_por_gallina";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion.getConnection());
+                DataSet ds = new DataSet();
+                adapter.Fill(ds, "control_vacunas_por_gallina");
+                dgvDatos.DataSource = ds.Tables["control_vacunas_por_gallina"];
+                dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar datos: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
 
@@ -295,23 +287,22 @@ namespace GranjaLosCocos
                         OR Fecha LIKE @textoBusqueda 
                         OR Dosis LIKE @textoBusqueda";
 
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
-                {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                        DataSet ds = new DataSet();
-                        adapter.Fill(ds, "control_vacunas_por_gallina");
-                        dgvDatos.DataSource = ds.Tables["control_vacunas_por_gallina"];
-                        dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    }
-                }
+                conexion.Open();
+                MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection());
+                cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds, "control_vacunas_por_gallina");
+                dgvDatos.DataSource = ds.Tables["control_vacunas_por_gallina"];
+                dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al buscar vacunas: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
             }
         }
     }

@@ -135,7 +135,6 @@ namespace GranjaLosCocos
             {
                 MessageBox.Show("Error al actualizar la gallina: " + ex.Message);
             }
-            CargarDatos(); // Actualiza la vista de datos
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -157,34 +156,31 @@ namespace GranjaLosCocos
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
-                {
-                    conn.Open();
+                conexion.Open();
 
-                    // Eliminar las filas relacionadas en la tabla control_vacunas_por_gallina
-                    string deleteRelatedQuery = "DELETE FROM control_vacunas_por_gallina WHERE Gallina_ID_Gallina = @Gallina_ID_Gallina";
-                    using (MySqlCommand cmd = new MySqlCommand(deleteRelatedQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Gallina_ID_Gallina", id);
-                        cmd.ExecuteNonQuery();
-                    }
+                // Eliminar las filas relacionadas en la tabla control_vacunas_por_gallina
+                string deleteRelatedQuery = "DELETE FROM control_vacunas_por_gallina WHERE Gallina_ID_Gallina = @Gallina_ID_Gallina";
+                MySqlCommand cmd = new MySqlCommand(deleteRelatedQuery, conexion.getConnection());
+                cmd.Parameters.AddWithValue("@Gallina_ID_Gallina", id);
+                cmd.ExecuteNonQuery();
 
-                    // Luego eliminar la gallina
-                    string deleteQuery = "DELETE FROM gallina WHERE ID_Gallina = @ID_Gallina";
-                    using (MySqlCommand cmd = new MySqlCommand(deleteQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ID_Gallina", id);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                // Luego eliminar la gallina
+                string deleteQuery = "DELETE FROM gallina WHERE ID_Gallina = @ID_Gallina";
+                cmd.CommandText = deleteQuery;
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@ID_Gallina", id);
+                cmd.ExecuteNonQuery();
+
+                conexion.Close();
+
                 MessageBox.Show("Gallina eliminada exitosamente.");
                 CargarDatos(); // Actualiza la vista de datos
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al eliminar la gallina: " + ex.Message);
+                conexion.Close();
             }
-            CargarDatos(); // Actualiza la vista de datos
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -221,31 +217,28 @@ namespace GranjaLosCocos
                 WHERE Raza LIKE @textoBusqueda";
                 }
 
-                using (MySqlConnection conn = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos"))
+                conexion.Open();
+                MySqlCommand cmd = new MySqlCommand(query, conexion.getConnection());
+                if (DateTime.TryParse(textoBusqueda, out fechaBusqueda))
                 {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        if (DateTime.TryParse(textoBusqueda, out fechaBusqueda))
-                        {
-                            cmd.Parameters.AddWithValue("@fechaFormateada", fechaBusqueda.ToString("yyyy-MM-dd"));
-                        }
-                        else
-                        {
-                            cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
-                        }
-
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                        DataSet ds = new DataSet();
-                        adapter.Fill(ds, "gallina");
-                        dgvDatos.DataSource = ds.Tables["gallina"];
-                        dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    }
+                    cmd.Parameters.AddWithValue("@fechaFormateada", fechaBusqueda.ToString("yyyy-MM-dd"));
                 }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
+                }
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds, "gallina");
+                dgvDatos.DataSource = ds.Tables["gallina"];
+                dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al buscar gallinas: " + ex.Message);
+                conexion.Close();
             }
         }
     }

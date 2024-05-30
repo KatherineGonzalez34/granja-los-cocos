@@ -13,11 +13,11 @@ namespace GranjaLosCocos
 {
     public partial class Form1 : Form
     {
-        private Conexion conexion;
+        private cConexion conexion;
         public Form1()
         {
             InitializeComponent();
-            conexion = new Conexion();
+            conexion = new cConexion();
         }
 
         private void button1_Click(object sender, EventArgs e)
