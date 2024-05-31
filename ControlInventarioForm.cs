@@ -112,5 +112,12 @@ namespace GranjaLosCocos
             submenu.Show();
             this.Hide();
         }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            SubmenuUsuariosForm submenu = new SubmenuUsuariosForm();
+            submenu.Show();
+            this.Hide();
+        }
     }
 }

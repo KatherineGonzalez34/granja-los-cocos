@@ -10,24 +10,29 @@ using System.Windows.Forms;
 
 namespace GranjaLosCocos
 {
-    public partial class AdminCosechasForm : Form
+    public partial class SubmenuUsuariosForm : Form
     {
-        public AdminCosechasForm()
+        public SubmenuUsuariosForm()
         {
             InitializeComponent();
         }
 
-        private void btnProduccionDiaria_Click(object sender, EventArgs e)
+        private void btnVacunas_Click(object sender, EventArgs e)
         {
-            SubmenuProduccionDiariaForm submenu = new SubmenuProduccionDiariaForm();
-            submenu.Show();
+            AdminRolesForm roles = new AdminRolesForm();
+            roles.Show();
             this.Hide();
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            SubmenuUsuariosForm submenu = new SubmenuUsuariosForm();
-            submenu.Show();
+            
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            AdminRolesForm roles = new AdminRolesForm();
+            roles.Show();
             this.Hide();
         }
     }

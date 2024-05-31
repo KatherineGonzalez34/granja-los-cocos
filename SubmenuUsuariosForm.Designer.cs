@@ -1,7 +1,7 @@
 ﻿
 namespace GranjaLosCocos
 {
-    partial class AdminGalerasForm
+    partial class SubmenuUsuariosForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,26 +29,24 @@ namespace GranjaLosCocos
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubmenuUsuariosForm));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnInventario = new System.Windows.Forms.Button();
             this.btnGallinas = new System.Windows.Forms.Button();
             this.btnCosechas = new System.Windows.Forms.Button();
             this.btnProduccionDiaria = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.btnVacunas = new System.Windows.Forms.Button();
+            this.btnGallinasMain = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnCrear = new System.Windows.Forms.Button();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -64,7 +62,18 @@ namespace GranjaLosCocos
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(221, 647);
-            this.panelMenu.TabIndex = 1;
+            this.panelMenu.TabIndex = 18;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GranjaLosCocos.Properties.Resources.Screenshot_cocos;
+            this.pictureBox1.Location = new System.Drawing.Point(34, 41);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(152, 68);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // btnInventario
             // 
@@ -113,7 +122,6 @@ namespace GranjaLosCocos
             this.btnProduccionDiaria.TabIndex = 4;
             this.btnProduccionDiaria.Text = "Producción diaria";
             this.btnProduccionDiaria.UseVisualStyleBackColor = false;
-            this.btnProduccionDiaria.Click += new System.EventHandler(this.btnProduccionDiaria_Click);
             // 
             // btnUsuarios
             // 
@@ -140,133 +148,88 @@ namespace GranjaLosCocos
             this.btnCerrarSesion.Text = "Cerrar sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
             // 
+            // btnVacunas
+            // 
+            this.btnVacunas.BackColor = System.Drawing.Color.White;
+            this.btnVacunas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVacunas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.btnVacunas.Location = new System.Drawing.Point(685, 150);
+            this.btnVacunas.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVacunas.Name = "btnVacunas";
+            this.btnVacunas.Size = new System.Drawing.Size(287, 256);
+            this.btnVacunas.TabIndex = 23;
+            this.btnVacunas.Text = "Roles";
+            this.btnVacunas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVacunas.UseVisualStyleBackColor = false;
+            this.btnVacunas.Click += new System.EventHandler(this.btnVacunas_Click);
+            // 
+            // btnGallinasMain
+            // 
+            this.btnGallinasMain.BackColor = System.Drawing.Color.White;
+            this.btnGallinasMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGallinasMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.btnGallinasMain.Location = new System.Drawing.Point(356, 150);
+            this.btnGallinasMain.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGallinasMain.Name = "btnGallinasMain";
+            this.btnGallinasMain.Size = new System.Drawing.Size(287, 256);
+            this.btnGallinasMain.TabIndex = 21;
+            this.btnGallinasMain.Text = "Usuarios";
+            this.btnGallinasMain.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGallinasMain.UseVisualStyleBackColor = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(258, 41);
+            this.label1.Location = new System.Drawing.Point(482, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(316, 29);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Administración de galeras";
+            this.label1.Size = new System.Drawing.Size(243, 29);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Modulo de usuarios";
             // 
-            // dgvDatos
+            // pictureBox2
             // 
-            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Location = new System.Drawing.Point(263, 312);
-            this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.RowHeadersWidth = 51;
-            this.dgvDatos.Size = new System.Drawing.Size(786, 296);
-            this.dgvDatos.TabIndex = 37;
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(721, 162);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(220, 190);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // btnBuscar
+            // pictureBox3
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.Location = new System.Drawing.Point(934, 253);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(104, 32);
-            this.btnBuscar.TabIndex = 36;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.pictureBox3.BackColor = System.Drawing.Color.White;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(385, 162);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(231, 190);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 22;
+            this.pictureBox3.TabStop = false;
             // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.txtBuscar.Location = new System.Drawing.Point(279, 258);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(597, 23);
-            this.txtBuscar.TabIndex = 35;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnEliminar.Location = new System.Drawing.Point(786, 181);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(141, 33);
-            this.btnEliminar.TabIndex = 34;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnActualizar.Location = new System.Drawing.Point(562, 181);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(141, 33);
-            this.btnActualizar.TabIndex = 33;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // btnCrear
-            // 
-            this.btnCrear.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnCrear.Location = new System.Drawing.Point(339, 181);
-            this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(141, 33);
-            this.btnCrear.TabIndex = 32;
-            this.btnCrear.Text = "Crear";
-            this.btnCrear.UseVisualStyleBackColor = false;
-            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(336, 116);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(235, 20);
-            this.txtNombre.TabIndex = 31;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 12F);
-            this.label4.Location = new System.Drawing.Point(262, 116);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 18);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "Nombre:";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::GranjaLosCocos.Properties.Resources.Screenshot_cocos;
-            this.pictureBox1.Location = new System.Drawing.Point(34, 41);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(152, 68);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
-            // AdminGalerasForm
+            // SubmenuUsuariosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 647);
-            this.Controls.Add(this.dgvDatos);
-            this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.btnCrear);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panelMenu);
-            this.Name = "AdminGalerasForm";
-            this.Text = "AdminGalerasForm";
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.btnVacunas);
+            this.Controls.Add(this.btnGallinasMain);
+            this.Controls.Add(this.label1);
+            this.Name = "SubmenuUsuariosForm";
+            this.Text = "SubmenuUsuariosForm";
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,22 +237,18 @@ namespace GranjaLosCocos
 
         #endregion
 
-        private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnInventario;
         private System.Windows.Forms.Button btnGallinas;
         private System.Windows.Forms.Button btnCosechas;
         private System.Windows.Forms.Button btnProduccionDiaria;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnVacunas;
+        private System.Windows.Forms.Button btnGallinasMain;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Button btnCrear;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label label4;
     }
 }

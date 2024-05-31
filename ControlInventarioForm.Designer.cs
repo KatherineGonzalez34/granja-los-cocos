@@ -158,7 +158,7 @@ namespace GranjaLosCocos
             // 
             this.pictureBox1.Image = global::GranjaLosCocos.Properties.Resources.Screenshot_cocos;
             this.pictureBox1.Location = new System.Drawing.Point(42, 46);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(136, 70);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -226,6 +226,7 @@ namespace GranjaLosCocos
             this.btnUsuarios.TabIndex = 4;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.UseVisualStyleBackColor = false;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // btnCerrarSesion
             // 

@@ -11,23 +11,38 @@ using System.Windows.Forms;
 
 namespace GranjaLosCocos
 {
-    public partial class AdminGalerasForm : Form
+    public partial class AdminRolesForm : Form
     {
+
         private cConexion conexion;
-        public AdminGalerasForm()
+        public AdminRolesForm()
         {
             InitializeComponent();
             conexion = new cConexion();
             cargarDatos();
         }
 
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            SubmenuUsuariosForm submenu = new SubmenuUsuariosForm();
+            submenu.Show();
+            this.Hide();
+        }
+
+        private void btnProduccionDiaria_Click(object sender, EventArgs e)
+        {
+            SubmenuProduccionDiariaForm submenu = new SubmenuProduccionDiariaForm();
+            submenu.Show();
+            this.Hide();
+        }
+
         private void cargarDatos()
         {
             try
             {
-                string query = "SELECT * FROM galera";
-                DataSet ds = conexion.buscar(query, "galera");
-                dgvDatos.DataSource = ds.Tables["galera"];
+                string query = "SELECT * FROM roles";
+                DataSet ds = conexion.buscar(query, "roles");
+                dgvDatos.DataSource = ds.Tables["roles"];
                 dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
@@ -40,35 +55,42 @@ namespace GranjaLosCocos
         {
             try
             {
-                if (string.IsNullOrEmpty(txtNombre.Text))
+                if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDescripcion.Text))
                 {
                     MessageBox.Show("Por favor, complete todos los campos.");
                     return;
                 }
 
-                string query = $"INSERT INTO galera (nombre) VALUES ('{txtNombre.Text}')";
+                string query = $"INSERT INTO roles (nombre, descripcion) VALUES ('{txtNombre.Text}', '{txtDescripcion.Text}')";
                 conexion.operacion(query);
                 txtNombre.Text = "";
-                cargarDatos(); // Actualiza la vista de datos
+                txtDescripcion.Text = "";
+                cargarDatos(); 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al crear la Galera: " + ex.Message);
+                MessageBox.Show("Error al crear el rol: " + ex.Message);
             }
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
+
+        private void AdminRolesForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnActualizar_Click_1(object sender, EventArgs e)
         {
             if (dgvDatos.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione una galera para actualizar.");
+                MessageBox.Show("Seleccione un rol para actualizar.");
                 return;
             }
 
             DataGridViewRow row = dgvDatos.SelectedRows[0];
             if (row.Cells["id"] == null)
             {
-                MessageBox.Show("No se encontró la columna ID_Gallina.");
+                MessageBox.Show("No se encontró la columna id.");
                 return;
             }
 
@@ -83,22 +105,22 @@ namespace GranjaLosCocos
             try
             {
 
-                string query = $"UPDATE galera SET nombre='{txtNombre.Text}' WHERE id={id}";
+                string query = $"UPDATE roles SET nombre='{txtNombre.Text}' WHERE id={id}";
                 conexion.operacion(query);
                 cargarDatos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar la galera: " + ex.Message);
+                MessageBox.Show("Error al actualizar la rol: " + ex.Message);
             }
             cargarDatos();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             if (dgvDatos.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione una galera para eliminar.");
+                MessageBox.Show("Seleccione un rol para eliminar.");
                 return;
             }
 
@@ -113,17 +135,17 @@ namespace GranjaLosCocos
 
             try
             {
-                string query = $"DELETE FROM galera WHERE id={id}";
+                string query = $"DELETE FROM roles WHERE id={id}";
                 conexion.operacion(query);
                 cargarDatos(); // Actualiza la vista de datos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar la gallina: " + ex.Message);
+                MessageBox.Show("Error al eliminar el rol: " + ex.Message);
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void btnBuscar_Click_1(object sender, EventArgs e)
         {
             string textoBusqueda = txtBuscar.Text.Trim();
 
@@ -137,7 +159,7 @@ namespace GranjaLosCocos
             {
                 string query = @"
                         SELECT * 
-                        FROM galera 
+                        FROM roles 
                         WHERE nombre LIKE @textoBusqueda";
 
                 conexion.Open();
@@ -145,32 +167,18 @@ namespace GranjaLosCocos
                 cmd.Parameters.AddWithValue("@textoBusqueda", "%" + textoBusqueda + "%");
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-                adapter.Fill(ds, "galera");
-                dgvDatos.DataSource = ds.Tables["galera"];
+                adapter.Fill(ds, "roles");
+                dgvDatos.DataSource = ds.Tables["roles"];
                 dgvDatos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al buscar galeras: " + ex.Message);
+                MessageBox.Show("Error al buscar roles: " + ex.Message);
             }
             finally
             {
                 conexion.Close();
             }
-        }
-
-        private void btnProduccionDiaria_Click(object sender, EventArgs e)
-        {
-            SubmenuProduccionDiariaForm submenu = new SubmenuProduccionDiariaForm();
-            submenu.Show();
-            this.Hide();
-        }
-
-        private void btnUsuarios_Click(object sender, EventArgs e)
-        {
-            SubmenuUsuariosForm submenu = new SubmenuUsuariosForm();
-            submenu.Show();
-            this.Hide();
         }
     }
 }
