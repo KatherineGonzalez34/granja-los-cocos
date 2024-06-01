@@ -283,5 +283,31 @@ namespace GranjaLosCocos
                 conexion.Close();
             }
         }
+
+        private void btnInventario_Click(object sender, EventArgs e)
+        {
+            ControlInventarioForm inventarioForm = new ControlInventarioForm();
+            inventarioForm.Show();
+            this.Hide();
+        }
+
+        private void btnGallinas_Click(object sender, EventArgs e)
+        {
+            GallinasForm gallinasForm = new GallinasForm();
+            gallinasForm.Show();
+            this.Hide();
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            // Confirmar cierre de sesión
+            var result = MessageBox.Show("¿Estás seguro de que deseas cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+            }
+        }
     }
 }

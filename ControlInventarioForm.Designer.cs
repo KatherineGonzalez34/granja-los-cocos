@@ -176,6 +176,7 @@ namespace GranjaLosCocos
             this.btnInventario.TabIndex = 0;
             this.btnInventario.Text = "Inventario";
             this.btnInventario.UseVisualStyleBackColor = false;
+            this.btnInventario.Click += new System.EventHandler(this.btnInventario_Click);
             // 
             // btnGallinas
             // 
@@ -201,6 +202,7 @@ namespace GranjaLosCocos
             this.btnCosechas.TabIndex = 2;
             this.btnCosechas.Text = "Cosechas";
             this.btnCosechas.UseVisualStyleBackColor = false;
+            this.btnCosechas.Click += new System.EventHandler(this.btnCosechas_Click);
             // 
             // btnProduccionDiaria
             // 

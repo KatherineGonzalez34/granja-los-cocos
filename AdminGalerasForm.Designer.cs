@@ -30,6 +30,7 @@ namespace GranjaLosCocos
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnInventario = new System.Windows.Forms.Button();
             this.btnGallinas = new System.Windows.Forms.Button();
             this.btnCosechas = new System.Windows.Forms.Button();
@@ -45,10 +46,9 @@ namespace GranjaLosCocos
             this.btnCrear = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -66,6 +66,17 @@ namespace GranjaLosCocos
             this.panelMenu.Size = new System.Drawing.Size(221, 647);
             this.panelMenu.TabIndex = 1;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GranjaLosCocos.Properties.Resources.Screenshot_cocos;
+            this.pictureBox1.Location = new System.Drawing.Point(34, 41);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(152, 68);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnInventario
             // 
             this.btnInventario.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -77,6 +88,7 @@ namespace GranjaLosCocos
             this.btnInventario.TabIndex = 1;
             this.btnInventario.Text = "Inventario";
             this.btnInventario.UseVisualStyleBackColor = false;
+            this.btnInventario.Click += new System.EventHandler(this.btnInventario_Click);
             // 
             // btnGallinas
             // 
@@ -89,6 +101,7 @@ namespace GranjaLosCocos
             this.btnGallinas.TabIndex = 2;
             this.btnGallinas.Text = "Gallinas";
             this.btnGallinas.UseVisualStyleBackColor = false;
+            this.btnGallinas.Click += new System.EventHandler(this.btnGallinas_Click);
             // 
             // btnCosechas
             // 
@@ -101,6 +114,7 @@ namespace GranjaLosCocos
             this.btnCosechas.TabIndex = 3;
             this.btnCosechas.Text = "Cosechas";
             this.btnCosechas.UseVisualStyleBackColor = false;
+            this.btnCosechas.Click += new System.EventHandler(this.btnCosechas_Click);
             // 
             // btnProduccionDiaria
             // 
@@ -139,6 +153,7 @@ namespace GranjaLosCocos
             this.btnCerrarSesion.TabIndex = 6;
             this.btnCerrarSesion.Text = "Cerrar sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // label1
             // 
@@ -236,17 +251,6 @@ namespace GranjaLosCocos
             this.label4.TabIndex = 30;
             this.label4.Text = "Nombre:";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::GranjaLosCocos.Properties.Resources.Screenshot_cocos;
-            this.pictureBox1.Location = new System.Drawing.Point(34, 41);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(152, 68);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
             // AdminGalerasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,8 +269,8 @@ namespace GranjaLosCocos
             this.Name = "AdminGalerasForm";
             this.Text = "AdminGalerasForm";
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

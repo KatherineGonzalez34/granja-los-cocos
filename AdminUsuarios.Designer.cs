@@ -211,6 +211,7 @@ namespace GranjaLosCocos
             this.btnInventario.TabIndex = 1;
             this.btnInventario.Text = "Inventario";
             this.btnInventario.UseVisualStyleBackColor = false;
+            this.btnInventario.Click += new System.EventHandler(this.btnInventario_Click);
             // 
             // btnGallinas
             // 
@@ -224,6 +225,7 @@ namespace GranjaLosCocos
             this.btnGallinas.TabIndex = 2;
             this.btnGallinas.Text = "Gallinas";
             this.btnGallinas.UseVisualStyleBackColor = false;
+            this.btnGallinas.Click += new System.EventHandler(this.btnGallinas_Click);
             // 
             // btnCosechas
             // 
@@ -237,6 +239,7 @@ namespace GranjaLosCocos
             this.btnCosechas.TabIndex = 3;
             this.btnCosechas.Text = "Cosechas";
             this.btnCosechas.UseVisualStyleBackColor = false;
+            this.btnCosechas.Click += new System.EventHandler(this.btnCosechas_Click);
             // 
             // btnProduccionDiaria
             // 
@@ -250,6 +253,7 @@ namespace GranjaLosCocos
             this.btnProduccionDiaria.TabIndex = 4;
             this.btnProduccionDiaria.Text = "Producción diaria";
             this.btnProduccionDiaria.UseVisualStyleBackColor = false;
+            this.btnProduccionDiaria.Click += new System.EventHandler(this.btnProduccionDiaria_Click);
             // 
             // btnUsuarios
             // 
@@ -263,6 +267,7 @@ namespace GranjaLosCocos
             this.btnUsuarios.TabIndex = 5;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.UseVisualStyleBackColor = false;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // btnCerrarSesion
             // 
@@ -276,6 +281,7 @@ namespace GranjaLosCocos
             this.btnCerrarSesion.TabIndex = 6;
             this.btnCerrarSesion.Text = "Cerrar sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // panelMenu
             // 
