@@ -26,15 +26,15 @@ namespace GranjaLosCocos
 
         private void btnGallinasMain_Click(object sender, EventArgs e)
         {
-            AdminCosechasForm cosechas = new AdminCosechasForm();
-            cosechas.Show();
+            AdminProduccionDiariaForm produccion = new AdminProduccionDiariaForm();
+            produccion.Show();
             this.Hide();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            AdminCosechasForm cosechas = new AdminCosechasForm();
-            cosechas.Show();
+            AdminProduccionDiariaForm produccion = new AdminProduccionDiariaForm();
+            produccion.Show();
             this.Hide();
         }
 

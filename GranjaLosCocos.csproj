@@ -110,6 +110,12 @@
     <Compile Include="AdminGalerasForm.Designer.cs">
       <DependentUpon>AdminGalerasForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminProduccionDiariaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminProduccionDiariaForm.Designer.cs">
+      <DependentUpon>AdminProduccionDiariaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminRolesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminGalerasForm.resx">
       <DependentUpon>AdminGalerasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminProduccionDiariaForm.resx">
+      <DependentUpon>AdminProduccionDiariaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminRolesForm.resx">
       <DependentUpon>AdminRolesForm.cs</DependentUpon>
