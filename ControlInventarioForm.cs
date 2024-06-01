@@ -81,7 +81,9 @@ namespace GranjaLosCocos
             var result = MessageBox.Show("¿Estás seguro de que deseas cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Application.Exit(); // Cerrar la aplicación
+                Login login = new Login();
+                login.Show();
+                this.Hide();
             }
         }
 
@@ -106,5 +108,32 @@ namespace GranjaLosCocos
             e.Graphics.DrawImage(bm, 0, 0);
         }
 
+        private void btnProduccionDiaria_Click(object sender, EventArgs e)
+        {
+            SubmenuProduccionDiariaForm submenu = new SubmenuProduccionDiariaForm();
+            submenu.Show();
+            this.Hide();
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            SubmenuUsuariosForm submenu = new SubmenuUsuariosForm();
+            submenu.Show();
+            this.Hide();
+        }
+
+        private void btnInventario_Click(object sender, EventArgs e)
+        {
+            ControlInventarioForm inventarioForm = new ControlInventarioForm();
+            inventarioForm.Show();
+            this.Hide();
+        }
+
+        private void btnCosechas_Click(object sender, EventArgs e)
+        {
+            AdminCosechasForm cosechas = new AdminCosechasForm();
+            cosechas.Show();
+            this.Hide();
+        }
     }
 }

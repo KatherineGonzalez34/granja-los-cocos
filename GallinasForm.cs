@@ -44,7 +44,9 @@ namespace GranjaLosCocos
             var result = MessageBox.Show("¿Estás seguro de que deseas cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Application.Exit(); // Cerrar la aplicación
+                Login login = new Login();
+                login.Show();
+                this.Hide();
             }
         }
 
@@ -62,6 +64,27 @@ namespace GranjaLosCocos
             ControlVacunasGallinaForm controlvacunasgallinaForm = new ControlVacunasGallinaForm();
             controlvacunasgallinaForm.Show();
             this.Hide(); // Ocultar el formulario actual
+        }
+
+        private void btnCosechas_Click(object sender, EventArgs e)
+        {
+            AdminCosechasForm cosechas = new AdminCosechasForm();
+            cosechas.Show();
+            this.Hide();
+        }
+
+        private void btnProduccionDiaria_Click(object sender, EventArgs e)
+        {
+            SubmenuProduccionDiariaForm submenu = new SubmenuProduccionDiariaForm();
+            submenu.Show();
+            this.Hide();
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            SubmenuUsuariosForm submenu = new SubmenuUsuariosForm();
+            submenu.Show();
+            this.Hide();
         }
     }
 }

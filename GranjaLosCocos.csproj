@@ -98,6 +98,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminCosechasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminCosechasForm.Designer.cs">
+      <DependentUpon>AdminCosechasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminGalerasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminGalerasForm.Designer.cs">
+      <DependentUpon>AdminGalerasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminProduccionDiariaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminProduccionDiariaForm.Designer.cs">
+      <DependentUpon>AdminProduccionDiariaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminRolesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminRolesForm.Designer.cs">
+      <DependentUpon>AdminRolesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminUsuarios.Designer.cs">
+      <DependentUpon>AdminUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="cConexion.cs" />
     <Compile Include="ControlInventarioForm.cs">
       <SubType>Form</SubType>
@@ -136,12 +166,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SubmenuProduccionDiariaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmenuProduccionDiariaForm.Designer.cs">
+      <DependentUpon>SubmenuProduccionDiariaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubmenuUsuariosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmenuUsuariosForm.Designer.cs">
+      <DependentUpon>SubmenuUsuariosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VacunasAdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VacunasAdminForm.Designer.cs">
       <DependentUpon>VacunasAdminForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminCosechasForm.resx">
+      <DependentUpon>AdminCosechasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminGalerasForm.resx">
+      <DependentUpon>AdminGalerasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminProduccionDiariaForm.resx">
+      <DependentUpon>AdminProduccionDiariaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminRolesForm.resx">
+      <DependentUpon>AdminRolesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminUsuarios.resx">
+      <DependentUpon>AdminUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlInventarioForm.resx">
       <DependentUpon>ControlInventarioForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +218,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubmenuProduccionDiariaForm.resx">
+      <DependentUpon>SubmenuProduccionDiariaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubmenuUsuariosForm.resx">
+      <DependentUpon>SubmenuUsuariosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VacunasAdminForm.resx">
       <DependentUpon>VacunasAdminForm.cs</DependentUpon>

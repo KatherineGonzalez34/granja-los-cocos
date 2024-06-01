@@ -12,7 +12,7 @@ namespace GranjaLosCocos
 {
     public class cConexion
     {
-        private string connectionString = "server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos";
+        private string connectionString = "server=localhost;user id=root;password=;persistsecurityinfo=True;database=granja_cocos;port=3307";
         private MySqlConnection connection;
 
         public cConexion()
