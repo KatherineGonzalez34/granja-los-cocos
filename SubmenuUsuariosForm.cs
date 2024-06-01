@@ -35,5 +35,19 @@ namespace GranjaLosCocos
             roles.Show();
             this.Hide();
         }
+
+        private void btnGallinasMain_Click(object sender, EventArgs e)
+        {
+            AdminUsuarios usuarios = new AdminUsuarios();
+            usuarios.Show();
+            this.Hide();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            AdminUsuarios usuarios = new AdminUsuarios();
+            usuarios.Show();
+            this.Hide();
+        }
     }
 }

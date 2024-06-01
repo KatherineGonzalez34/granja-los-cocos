@@ -116,6 +116,12 @@
     <Compile Include="AdminRolesForm.Designer.cs">
       <DependentUpon>AdminRolesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminUsuarios.Designer.cs">
+      <DependentUpon>AdminUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="cConexion.cs" />
     <Compile Include="ControlInventarioForm.cs">
       <SubType>Form</SubType>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminRolesForm.resx">
       <DependentUpon>AdminRolesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminUsuarios.resx">
+      <DependentUpon>AdminUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlInventarioForm.resx">
       <DependentUpon>ControlInventarioForm.cs</DependentUpon>
