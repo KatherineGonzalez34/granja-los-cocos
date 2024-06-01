@@ -26,29 +26,29 @@ namespace GranjaLosCocos
 
         private void btnGallinasMain_Click(object sender, EventArgs e)
         {
-            AdminGalerasForm galera = new AdminGalerasForm();
-            galera.Show();
+            AdminCosechasForm cosechas = new AdminCosechasForm();
+            cosechas.Show();
             this.Hide();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            AdminGalerasForm galera = new AdminGalerasForm();
-            galera.Show();
+            AdminCosechasForm cosechas = new AdminCosechasForm();
+            cosechas.Show();
             this.Hide();
         }
 
         private void btnProduccionDiaria_Click(object sender, EventArgs e)
         {
-            SubmenuProduccionDiariaForm submenu = new SubmenuProduccionDiariaForm();
-            submenu.Show();
+            AdminGalerasForm galera = new AdminGalerasForm();
+            galera.Show();
             this.Hide();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            AdminCosechasForm cosechas = new AdminCosechasForm();
-            cosechas.Show();
+            AdminGalerasForm galera = new AdminGalerasForm();
+            galera.Show();
             this.Hide();
         }
     }

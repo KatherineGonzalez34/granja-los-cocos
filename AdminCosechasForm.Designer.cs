@@ -48,14 +48,13 @@ namespace GranjaLosCocos
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.txtHoraHidratacion = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnCrear = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
@@ -126,6 +125,7 @@ namespace GranjaLosCocos
             this.btnCosechas.TabIndex = 3;
             this.btnCosechas.Text = "Cosechas";
             this.btnCosechas.UseVisualStyleBackColor = false;
+            this.btnCosechas.Click += new System.EventHandler(this.btnCosechas_Click);
             // 
             // btnProduccionDiaria
             // 
@@ -182,26 +182,11 @@ namespace GranjaLosCocos
             // 
             this.cmbTipoFruta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmbTipoFruta.FormattingEnabled = true;
-            this.cmbTipoFruta.Items.AddRange(new object[] {
-            "Leghorn",
-            "Rhode Island Red",
-            "Plymouth Rock (Barred Rock)",
-            "Sussex",
-            "Australorp",
-            "Isa Brown",
-            "Ancona",
-            "Minorca",
-            "Golden Comet",
-            "Marans",
-            "Andalusian",
-            "New Hampshire",
-            "Hamburg",
-            "Welsummer",
-            "Bovan Brown"});
             this.cmbTipoFruta.Location = new System.Drawing.Point(365, 94);
             this.cmbTipoFruta.Name = "cmbTipoFruta";
             this.cmbTipoFruta.Size = new System.Drawing.Size(235, 23);
             this.cmbTipoFruta.TabIndex = 13;
+            this.cmbTipoFruta.SelectedIndexChanged += new System.EventHandler(this.cmbTipoFruta_SelectedIndexChanged);
             // 
             // lblRaza
             // 
@@ -217,22 +202,6 @@ namespace GranjaLosCocos
             // 
             this.cmbFertilizante.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmbFertilizante.FormattingEnabled = true;
-            this.cmbFertilizante.Items.AddRange(new object[] {
-            "Leghorn",
-            "Rhode Island Red",
-            "Plymouth Rock (Barred Rock)",
-            "Sussex",
-            "Australorp",
-            "Isa Brown",
-            "Ancona",
-            "Minorca",
-            "Golden Comet",
-            "Marans",
-            "Andalusian",
-            "New Hampshire",
-            "Hamburg",
-            "Welsummer",
-            "Bovan Brown"});
             this.cmbFertilizante.Location = new System.Drawing.Point(365, 140);
             this.cmbFertilizante.Name = "cmbFertilizante";
             this.cmbFertilizante.Size = new System.Drawing.Size(235, 23);
@@ -301,23 +270,6 @@ namespace GranjaLosCocos
             this.txtCantidad.Size = new System.Drawing.Size(235, 20);
             this.txtCantidad.TabIndex = 21;
             // 
-            // txtHoraHidratacion
-            // 
-            this.txtHoraHidratacion.Location = new System.Drawing.Point(807, 187);
-            this.txtHoraHidratacion.Name = "txtHoraHidratacion";
-            this.txtHoraHidratacion.Size = new System.Drawing.Size(235, 20);
-            this.txtHoraHidratacion.TabIndex = 23;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F);
-            this.label5.Location = new System.Drawing.Point(672, 189);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 18);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Hora hidratación:";
-            // 
             // dgvDatos
             // 
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -338,6 +290,7 @@ namespace GranjaLosCocos
             this.btnBuscar.TabIndex = 28;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
@@ -358,6 +311,7 @@ namespace GranjaLosCocos
             this.btnEliminar.TabIndex = 26;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnActualizar
             // 
@@ -370,6 +324,7 @@ namespace GranjaLosCocos
             this.btnActualizar.TabIndex = 25;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnCrear
             // 
@@ -382,20 +337,31 @@ namespace GranjaLosCocos
             this.btnCrear.TabIndex = 24;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = false;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(422, 364);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(438, 17);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Buscar por cantidad, por identificacion del tipo de fruta o fertilizante:";
             // 
             // AdminCosechasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 647);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnCrear);
-            this.Controls.Add(this.txtHoraHidratacion);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtpFechaSiembra);
@@ -439,13 +405,12 @@ namespace GranjaLosCocos
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.TextBox txtHoraHidratacion;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnCrear;
+        private System.Windows.Forms.Label label5;
     }
 }
